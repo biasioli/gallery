@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gallery</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="Gallery project">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="gallery.css">
+    </head>
+    <body>
+        <h1>Gallery</h1>
+        <div class="gallery-parent"></div>
+    </body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="gallery.js"></script>
+    <script type="text/javascript">
+        gallery({
+            container: ".gallery-parent",
+            images: [{src:"images/gallery/pic0.jpg"},{src:"images/gallery/pic1.jpg"},{src:"images/gallery/pic2.jpg"},{src:"images/gallery/pic3.jpg"},{src:"images/gallery/pic4.jpg"},{src:"images/gallery/pic5.jpg"},{src:"images/gallery/pic6.jpg"}],
+            arrows: true
+        })
+    </script>
+</html>

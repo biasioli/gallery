@@ -1,0 +1,51 @@
+.gallery-parent {
+	width: 100%;
+	height: 800px;
+	position: relative;
+}
+.gallery-wrapper,
+.gallery-image {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.gallery-image {
+	background-size: cover;
+	background-position: center center;
+	opacity:0;
+}
+.gallery-image.visible {
+	opacity: 1;
+}
+#gallery-thumbs {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+.gallery-thumbs-resize,
+.gallery-thumbs-original {
+	width: 100px;
+	height: 70px;
+	background-size: cover;
+	background-position: center center;
+	display: inline-block;
+	cursor: pointer;
+	margin: 3px;
+}
+.arrow {
+	position: absolute;
+	color: #fff;
+	background-color: rgba(123, 123, 123, 0.55);
+	width: 50px;
+	height: 50px;
+	font-size: 40px;
+	text-align: center;
+	top: 50%;
+	margin-top: -25px;
+	cursor: pointer;
+}
+.arrow.next {
+	right: 0;
+}

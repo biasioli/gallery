@@ -9,16 +9,20 @@
         <link rel="stylesheet" href="gallery.css">
     </head>
     <body>
-        <h1>Gallery</h1>
+        <div class="wrapper" data-anim="base wrapper">
+            <div class="circle" data-anim="base left"></div>
+            <div class="circle" data-anim="base right"></div>
+        </div>
         <div class="gallery-parent"></div>
     </body>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="gallery.js"></script>
     <script type="text/javascript">
         gallery({
             container: ".gallery-parent",
             images: [{src:"images/gallery/pic0.jpg"},{src:"images/gallery/pic1.jpg"},{src:"images/gallery/pic2.jpg"},{src:"images/gallery/pic3.jpg"},{src:"images/gallery/pic4.jpg"},{src:"images/gallery/pic5.jpg"},{src:"images/gallery/pic6.jpg"}],
-            arrows: true
+            arrows: true,
+            progress_dots: true
         })
     </script>
 </html>

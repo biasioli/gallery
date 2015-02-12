@@ -1,6 +1,8 @@
 var gallery = function(options){
 	options = $.extend({
-		arrows: false
+		arrows: false,
+		autoloop: false,
+		progress_dots: false
 	}, options);
 
 	var images = options.images;
@@ -12,6 +14,14 @@ var gallery = function(options){
 	var current_position = 0;
 
 	container.append(wrapper);
+
+	var goToNext = function (){
+		var next_image = image_sequence[(current_position+1) % image_sequence.length][0];
+		current_image.removeClass('visible');
+		next_image.addClass('visible');
+		current_image = next_image;
+		current_position = (current_position+1) % image_sequence.length;
+	};
 	
 
 	$.each(images, function( position, obj ){
@@ -27,7 +37,11 @@ var gallery = function(options){
 		wrapper.append(image_div);
 
 		if (thumb_path === undefined) {
-			thumb = $('<div class="gallery-thumbs-resize" style="background-image: url(\''+ image_path +'\');"></div>');
+			if ( options.progress_dots === true ) {
+				thumb = $('<div class="progress_dots"></div>');
+			} else {
+				thumb = $('<div class="gallery-thumbs-resize" style="background-image: url(\''+ image_path +'\');"></div>');
+			}
 		} else {
 			thumb = $('<div class="gallery-thumbs-original" style="background-image: url(\''+ thumb_path +'\');"></div>');
 		}
@@ -49,13 +63,27 @@ var gallery = function(options){
 		wrapper.append(previous_arrow);
 
 		next_arrow.click(function (){
-			var next_image = image_sequence[(current_position+1) % image_sequence.length][0];
-			current_image.removeClass('visible');
-			next_image.addClass('visible');
-			current_image = next_image;
-			current_position = (current_position+1) % image_sequence.length;
-
+			goToNext();
 		});
+
+		previous_arrow.click(function (){
+			var previous_image;
+			if (current_position === 0) {
+				current_position =  image_sequence.length - 1;
+			} else {
+				current_position = current_position - 1;
+			}
+			previous_image = image_sequence[current_position][0];
+			current_image.removeClass('visible');
+			previous_image.addClass('visible');
+			current_image = previous_image;
+		});
+	}
+
+	if ( options.autoloop === true ) {
+		setInterval(function() {
+		    goToNext();
+		}, 2000);
 	}
 
 
